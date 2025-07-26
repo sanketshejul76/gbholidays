@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GB Holiday's - Your Travel Partner</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-black: #000000;
+            --primary-white: #ffffff;
+            --primary-yellow: #ffc107;
+            --secondary-yellow: #ffca2c;
+            --primary-dark-gray: #333333;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        .navbar {
+            background-color: var(--primary-dark-gray);
+            border-bottom: 1px solid var(--primary-yellow);
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: var(--primary-yellow) !important;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-yellow) !important;
+            transform: scale(1.1);
+        }
+
+        .logo {
+            max-height: 60px;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1513338528991-696b7e768c3f?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--primary-yellow);
+        }
+
+        .hero-section p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--primary-white);
+        }
+
+        .custom-card {
+            background-color: var(--primary-white);
+            border: 1px solid var(--primary-yellow);
+            color: var(--primary-black);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px var(--primary-yellow);
+        }
+
+        .custom-card img,
+        .custom-card video {
+            height: 180px;
+            object-fit: cover;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .custom-card .card-body {
+            padding: 1.25rem;
+        }
+
+        .section-title {
+            color: var(--primary-yellow);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            animation: fadeIn 1s ease-in;
+        }
+
+        .text-section {
+            color: var(--primary-black);
+        }
+
+        .text-section h4 {
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .btn-warning {
+            background-color: var(--primary-yellow);
+            border-color: var(--primary-yellow);
+            color: var(--primary-black);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-warning:hover {
+            background-color: var(--secondary-yellow);
+            transform: scale(1.05);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .whatsapp-float a {
+            background-color: #25D366;
+            color: var(--primary-white);
+            border-radius: 50px;
+            padding: 15px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float a:hover {
+            background-color: #1ebe57;
+            transform: rotate(360deg);
+        }
+
+        .gallery img,
+        .gallery video {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .social-feed img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: var(--primary-dark-gray);
+            color: var(--primary-yellow);
+            padding: 2rem 0;
+            border-top: 1px solid var(--primary-yellow);
+        }
+
+        footer a {
+            color: var(--primary-yellow);
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--secondary-yellow);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            .custom-card img,
+            .custom-card video,
+            .gallery img,
+            .gallery video {
+                height: 140px;
+            }
+
+            .social-feed img {
+                height: 120px;
+            }
+
+            .hero-section {
+                min-height: 60vh;
+            }
+
+            .logo {
+                max-height: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="gbholidaylogo.png" alt="GB Holiday's Logo" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#vehicles">Vehicles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div>
+            <h1>Hello from GB Holiday's! </h1>
+            <p class="lead">Your trusted partner for unforgettable travel experiences</p>
+            <a href="#contact" class="btn btn-warning btn-lg mt-3">Plan Your Trip</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-5 text-section">
+        <div class="container">
+            <h2 class="section-title">About GB Holiday's</h2>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <h4>Who We Are</h4>
+                    <p>Founded in 2010, GB Holiday's was born from the vision of our founders to make travel accessible,
+                        memorable, and seamless. We’ve grown into a trusted name, serving thousands of happy travelers.
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <h4>Mission & Values</h4>
+                    <p>Our mission is to craft exceptional travel experiences with a commitment to safety, quality
+                        service, and customer satisfaction. We value integrity, sustainability, and joyful memories.</p>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <h4>Why Trust Us</h4>
+                    <p>With over 50,000 travelers served, 15 years in business, and affiliations with IATA and TAAI, we
+                        ensure reliability and trust in every journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <i class="fas fa-plane fa-3x mb-3"></i>
+                            <h5 class="card-title">Flight Booking</h5>
+                            <p class="card-text">Book domestic and international flights with competitive fares. Special
+                                offers for group bookings and last-minute deals.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <i class="fas fa-hotel fa-3x mb-3"></i>
+                            <h5 class="card-title">Hotel Booking</h5>
+                            <p class="card-text">Choose from budget to luxury accommodations. We partner with world
+                                class hotels and provide verified guest reviews.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <i class="fas fa-taxi fa-3x mb-3"></i>
+                            <h5 class="card-title">Car Rental</h5>
+                            <p class="card-text">Reliable airport transfers, full-day rentals, and outstation cabs for
+                                hassle-free travel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <i class="fas fa-suitcase fa-3x mb-3"></i>
+                            <h5 class="card-title">Holiday Packages</h5>
+                            <p class="card-text">Tailored packages including family trips, honeymoon specials, weekend
+                                getaways, religious tours (Kedarnath, Shirdi), and adventure tours (trekking, rafting,
+                                safaris).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <i class="fas fa-briefcase fa-3x mb-3"></i>
+                            <h5 class="card-title">Corporate Travel</h5>
+                            <p class="card-text">Comprehensive MICE solutions for meetings, incentives, conferences, and
+                                exhibitions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <i class="fas fa-users fa-3x mb-3"></i>
+                            <h5 class="card-title">Group Tours</h5>
+                            <p class="card-text">Customized tours for students, women-only groups, and senior citizens.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <i class="fas fa-passport fa-3x mb-3"></i>
+                            <h5 class="card-title">Visa Assistance</h5>
+                            <p class="card-text">Hassle-free visa processing for international travel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <i class="fas fa-shield-alt fa-3x mb-3"></i>
+                            <h5 class="card-title">Travel Insurance</h5>
+                            <p class="card-text">Comprehensive insurance plans for safe and worry-free journeys.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <i class="fas fa-money-bill-wave fa-3x mb-3"></i>
+                            <h5 class="card-title">Currency Exchange</h5>
+                            <p class="card-text">Competitive rates for currency exchange to make your travel seamless.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <i class="fas fa-id-card fa-3x mb-3"></i>
+                            <h5 class="card-title">Passport Services</h5>
+                            <p class="card-text">Assistance with passport applications and renewals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicles Section -->
+    <section id="vehicles" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Our Travel Vehicles</h2>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <img src="https://images.unsplash.com/photo-1533745894801-062ca8abd594?q=80&w=726&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="Travel Van">
+                        <div class="card-body">
+                            <h5 class="card-title">Luxury Van</h5>
+                            <p class="card-text">Spacious and comfortable for group travel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <img src="https://images.unsplash.com/photo-1533745894801-062ca8abd594?q=80&w=726&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="Bus">
+                        <div class="card-body">
+                            <h5 class="card-title">Tour Bus</h5>
+                            <p class="card-text">Perfect for large groups and long journeys.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <img src="https://images.unsplash.com/photo-1533745894801-062ca8abd594?q=80&w=726&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="Car">
+                        <div class="card-body">
+                            <h5 class="card-title">Premium Car</h5>
+                            <p class="card-text">Ideal for small groups or solo travelers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose-us" class="py-5 bg-light text-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="row text-center">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <i class="fas fa-users fa-3x mb-3"></i>
+                    <h5>50,000+ Happy Travelers</h5>
+                    <p>Serving thousands of satisfied customers worldwide.</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <i class="fas fa-calendar-alt fa-3x mb-3"></i>
+                    <h5>15+ Years in Business</h5>
+                    <p>Decades of experience in crafting perfect trips.</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <i class="fas fa-handshake fa-3x mb-3"></i>
+                    <h5>Trusted Affiliations</h5>
+                    <p>Partnered with IATA and TAAI for reliability.</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <i class="fas fa-star fa-3x mb-3"></i>
+                    <h5>Top-Rated Service</h5>
+                    <p>Consistently high ratings from our travelers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Our Travel Gallery</h2>
+            <div class="row gallery">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <img src="https://plus.unsplash.com/premium_photo-1677288649820-a7bd079d102e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dG91cmlzdHxlbnwwfHwwfHx8MA%3D%3D"
+                            class="card-img-top" alt="Kedarnath Tour">
+                        <div class="card-body">
+                            <h5 class="card-title">Kedarnath Tour</h5>
+                            <p class="card-text">Spiritual journey to the sacred Kedarnath temple.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <img src="https://images.unsplash.com/photo-1575986767340-5d17ae767ab0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dG91cmlzdHxlbnwwfHwwfHx8MA%3D%3D"
+                            class="card-img-top" alt="Honeymoon Tour">
+                        <div class="card-body">
+                            <h5 class="card-title">Honeymoon Special</h5>
+                            <p class="card-text">Romantic escapes to exotic destinations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <video controls class="card-img-top">
+                            <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4"
+                                type="video/mp4">
+                        </video>
+                        <div class="card-body">
+                            <h5 class="card-title">Adventure Trekking</h5>
+                            <p class="card-text">Thrilling treks through scenic trails.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <img src="https://images.unsplash.com/photo-1500154040473-d91a2e21a6ea?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dG91cmlzdHxlbnwwfHwwfHx8MA%3D%3D"
+                            class="card-img-top" alt="Safari Tour">
+                        <div class="card-body">
+                            <h5 class="card-title">Wildlife Safari</h5>
+                            <p class="card-text">Explore nature with guided safaris.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Social Media Feed -->
+            <h4 class="section-title mt-5">Follow Our Journey</h4>
+            <div class="row social-feed">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <img src="https://source.unsplash.com/400x140/?travel" class="card-img-top"
+                            alt="Social Media Post 1">
+                        <div class="card-body">
+                            <p class="card-text">Exploring new horizons!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <img src="https://source.unsplash.com/400x140/?tour" class="card-img-top"
+                            alt="Social Media Post 2">
+                        <div class="card-body">
+                            <p class="card-text">Unforgettable adventures await!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <img src="https://source.unsplash.com/400x140/?vacation" class="card-img-top"
+                            alt="Social Media Post 3">
+                        <div class="card-body">
+                            <p class="card-text">Relax and unwind with us!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <img src="https://source.unsplash.com/400x140/?holiday" class="card-img-top"
+                            alt="Social Media Post 4">
+                        <div class="card-body">
+                            <p class="card-text">Memories that last a lifetime!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <p class="card-text">"GB Holiday's made our family trip to Shirdi unforgettable. Everything
+                                was perfectly organized!"</p>
+                            <p><strong>- Priya Sharma</strong> ⭐⭐⭐⭐⭐</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <p class="card-text">"The adventure tour was thrilling! The team ensured our safety and
+                                comfort throughout."</p>
+                            <p><strong>- Rahul Verma</strong> ⭐⭐⭐⭐</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="custom-card">
+                        <div class="card-body">
+                            <p class="card-text">"Honeymoon package was a dream come true. Highly recommend GB
+                                Holiday's!"</p>
+                            <p><strong>- Sneha & Arjun</strong> ⭐⭐⭐⭐⭐</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Google Reviews Placeholder -->
+            <div class="text-center text-section">
+                <h4 class="section-title">Check Our Google Reviews</h4>
+                <p><em>(Google Reviews widget can be integrated here using Google My Business API)</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 text-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="row">
+                <div class="col-md-6 col-sm-8 mx-auto text-center">
+                    <i class="fas fa-phone fa-3x mb-3"></i>
+                    <p>For inquiries or bookings, call us at:</p>
+                    <p><strong>+91-9637161540 | +91-8766004391</strong></p>
+                    <p>Or send us a message via WhatsApp:</p>
+                    <a href="https://wa.me/919637161540" class="btn btn-warning">Message on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2025 GB Holiday's. All Rights Reserved.</p>
+            <p>Follow us:
+                <a href="#" class="mx-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="mx-2"><i class="fab fa-twitter"></i></a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Icon -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/919637161540" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Bootstrap 5 JS and Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
