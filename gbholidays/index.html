@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
     <style>
         :root {
             --primary-black: #000000;
@@ -250,19 +252,31 @@
             <div class="row">
                 <div class="col-md-4 col-sm-6 mb-4">
                     <h4>Who We Are</h4>
-                    <p>Founded in 2010, GB Holiday's was born from the vision of our founders to make travel accessible,
-                        memorable, and seamless. We’ve grown into a trusted name, serving thousands of happy travelers.
+                    <p>Established in 2018, GB Holiday's was founded with a simple yet powerful vision: to make travel
+                        more accessible,
+                        seamless, and unforgettable. Over the years, we’ve grown into a trusted name in the travel
+                        industry, proudly serving
+                        thousands of happy travelers with a perfect blend of passion and luxury.
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-6 mb-4">
-                    <h4>Mission & Values</h4>
-                    <p>Our mission is to craft exceptional travel experiences with a commitment to safety, quality
-                        service, and customer satisfaction. We value integrity, sustainability, and joyful memories.</p>
+                    <h4>Our Mission & Values</h4>
+                    <p>At GB Holiday's, our mission is to design exceptional travel experiences that prioritize safety,
+                        quality service, and complete customer satisfaction.
+
+                        We are driven by core values that guide everything we do:
+
+                        Integrity in every interaction
+                        Sustainability in our choices
+                        Joyful memories in every journey</p>
                 </div>
                 <div class="col-md-4 col-sm-6 mb-4">
                     <h4>Why Trust Us</h4>
-                    <p>With over 50,000 travelers served, 15 years in business, and affiliations with IATA and TAAI, we
-                        ensure reliability and trust in every journey.</p>
+                    <p>With over 50,000 satisfied travelers, 8+ years of industry experience, and official affiliations
+                        with both
+                        Maharashtra Tourism and Indian Tourism, we offer more than just travel — we deliver peace of
+                        mind. From the
+                        moment you plan your trip with us to your safe return home, you’re in trusted hands.</p>
                 </div>
             </div>
         </div>
@@ -586,6 +600,9 @@
                     <p><strong>+91-9637161540 | +91-8766004391</strong></p>
                     <p>Or send us a message via WhatsApp:</p>
                     <a href="https://wa.me/919637161540" class="btn btn-warning">Message on WhatsApp</a>
+
+                    <p class="mt-4 mb-2">Scan QR to Visit Our Website:</p>
+                    <div id="qrcode" style="width: 150px; margin: 0 auto;"></div>
                 </div>
             </div>
         </div>
@@ -609,7 +626,18 @@
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
+    <script>
+        const myWebsiteLink = "https://gbholidays.vercel.app/";
 
+        new QRCode(document.getElementById("qrcode"), {
+            text: myWebsiteLink,
+            width: 150,
+            height: 150,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    </script>
     <!-- Bootstrap 5 JS and Popper -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
